@@ -1,0 +1,21 @@
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    always_declare_return_types: true
+    avoid_unused_constructor_parameters: true
+    camel_case_types: true
+    cancel_subscriptions: true
+    file_names: true
+    library_names: true
+    library_prefixes: true
+    lines_longer_than_80_chars: true
+    non_constant_identifier_names: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    prefer_single_quotes: true
+    unnecessary_const: true
+    unnecessary_new: true
+    unnecessary_this: true

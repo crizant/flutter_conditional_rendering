@@ -1,14 +1,94 @@
 # flutter_conditional_rendering
 
-A new Flutter package project.
+A flutter package which enhances conditional rendering, supports `if`-`else` and `switch` conditions.
 
-## Getting Started
+## Why
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+In flutter if you want to do conditional rendering, you may do this:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+```dart
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        if (someCondition == true)
+          Text('The condition is true!'),
+      ],
+    );
+  }
+}
+```
+
+But what if you want to use a tertiary (`if`-`else`) condition?
+
+```dart
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        someCondition == true ?
+          Text('The condition is true!'):
+          Text('The condition is false!'),
+      ],
+    );
+  }
+}
+```
+
+It is okay for a single `Text` widget, but the readability quickly become very bad when the child widget is multi-layered.
+
+## Usage
+
+### If-Else condition:
+
+```dart
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Conditional.single(
+          conditionBuilder: () => someCondition == true,
+          widgetBuilder: () => Text('The condition is true!'),
+          fallbackBuilder: () => Text('The condition is false!'),
+        ),
+      ],
+    );
+  }
+}
+```
+
+### Switch condition:
+
+```dart
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        ConditionalSwitch.single(
+          valueBuilder: () => 'A',
+          caseBuilders: {
+            'A': () => Text('The value is A!'),
+            'B': () => Text('The value is B!'),
+          },
+          fallbackBuilder: () => Text('None of the cases matched!'),
+        ),
+      ],
+    );
+  }
+}
+```
+
+## Want a list of widgets?
+
+If you want to conditionally render a list of widgets (`List<Widget>`) instead of a single one. Use `Conditional.list()` and `ConditionalSwitch.list()`!
+
+## Contributions
+
+Feel free to contribute to this project.
+
+If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://github.com/crizant/flutter_conditional_rendering/issues).
+If you fixed a bug or implemented a feature, please send a [pull request](https://github.com/crizant/flutter_conditional_rendering/pulls).

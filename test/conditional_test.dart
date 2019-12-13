@@ -41,7 +41,8 @@ void main() {
   );
 
   testWidgets(
-    'Render list of widgets by `widgetBuilder` if `conditionBuilder` returns `true`',
+    'Render list of widgets by `widgetBuilder` if ' +
+        '`conditionBuilder` returns `true`',
     (WidgetTester tester) async {
       final List<Widget> trueWidgetList = [Container()];
       final List<Widget> falseWidgetList = [Container()];
@@ -66,7 +67,8 @@ void main() {
   );
 
   testWidgets(
-    'Render list of widgets by `widgetBuilder` if `conditionBuilder` returns `false`',
+    'Render list of widgets by `widgetBuilder` if ' +
+        '`conditionBuilder` returns `false`',
     (WidgetTester tester) async {
       final List<Widget> trueWidgetList = [Container()];
       final List<Widget> falseWidgetList = [Container()];

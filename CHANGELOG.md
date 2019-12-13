@@ -1,3 +1,11 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.2] - 2019-12-13
 
-* TODO: Describe initial release.
+* Added example.
+
+## [1.0.1] - 2019-12-11
+
+* Updated package description.
+
+## [1.0.0] - 2019-12-11
+
+* Added two classes: `Conditional` and `ConditionalSwitch`, both of them support `.single()` and `.list()` functions.

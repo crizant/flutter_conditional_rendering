@@ -1,11 +1,10 @@
 name: flutter_conditional_rendering
-description: A new Flutter package project.
-version: 0.0.1
-author:
-homepage:
+description: A flutter package which enhances conditional rendering, supports if-else and switch conditions.
+version: 1.0.2
+homepage: https://github.com/crizant/flutter_conditional_rendering
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
