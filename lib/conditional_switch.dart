@@ -39,8 +39,7 @@ class ConditionalSwitch {
   static List<Widget> list<T>({
     @required BuildContext context,
     @required T Function(BuildContext context) valueBuilder,
-    @required
-        Map<T, List<Widget> Function(BuildContext context)> caseBuilders,
+    @required Map<T, List<Widget> Function(BuildContext context)> caseBuilders,
     @required List<Widget> Function(BuildContext context) fallbackBuilder,
   }) {
     final T value = valueBuilder(context);

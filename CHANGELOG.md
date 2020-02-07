@@ -1,3 +1,7 @@
+## [1.1.1] - 2020-02-08
+
+* Minor code format update.
+
 ## [1.1.0] - 2020-02-08
 
 * Added `BuildContext` parameter to builder functions.
