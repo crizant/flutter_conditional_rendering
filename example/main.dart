@@ -45,22 +45,23 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'You have pushed the button this many times:',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15.0,
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.headline1,
             ),
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
             Conditional.single(
-              conditionBuilder: () => _counter % 2 == 0,
-              widgetBuilder: () {
+              context: context,
+              conditionBuilder: (BuildContext context) => _counter % 2 == 0,
+              widgetBuilder: (BuildContext context) {
                 return Column(
                   children: <Widget>[
                     Text(
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
                     Icon(
@@ -80,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 );
               },
-              fallbackBuilder: () {
+              fallbackBuilder: (BuildContext context) {
                 return Column(
                   children: <Widget>[
                     Text(
@@ -89,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
                     Icon(
