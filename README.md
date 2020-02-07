@@ -50,9 +50,10 @@ class MyWidget extends StatelessWidget {
     return Column(
       children: <Widget>[
         Conditional.single(
-          conditionBuilder: () => someCondition == true,
-          widgetBuilder: () => Text('The condition is true!'),
-          fallbackBuilder: () => Text('The condition is false!'),
+          context: context,
+          conditionBuilder: (BuildContext context) => someCondition == true,
+          widgetBuilder: (BuildContext context) => Text('The condition is true!'),
+          fallbackBuilder: (BuildContext context) => Text('The condition is false!'),
         ),
       ],
     );
@@ -69,12 +70,13 @@ class MyWidget extends StatelessWidget {
     return Column(
       children: <Widget>[
         ConditionalSwitch.single(
-          valueBuilder: () => 'A',
+          context: context,
+          valueBuilder: (BuildContext context) => 'A',
           caseBuilders: {
-            'A': () => Text('The value is A!'),
-            'B': () => Text('The value is B!'),
+            'A': (BuildContext context) => Text('The value is A!'),
+            'B': (BuildContext context) => Text('The value is B!'),
           },
-          fallbackBuilder: () => Text('None of the cases matched!'),
+          fallbackBuilder: (BuildContext context) => Text('None of the cases matched!'),
         ),
       ],
     );
