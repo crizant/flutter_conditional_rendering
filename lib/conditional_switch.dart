@@ -14,15 +14,16 @@ class ConditionalSwitch {
   ///  it is used when none of the keys in [caseBuilders]matches
   /// the value returns by [valueBuilder].
   static Widget single({
-    @required dynamic Function() valueBuilder,
-    @required Map<dynamic, Widget Function()> caseBuilders,
-    @required Widget Function() fallbackBuilder,
+    @required BuildContext context,
+    @required dynamic Function(BuildContext context) valueBuilder,
+    @required Map<dynamic, Widget Function(BuildContext context)> caseBuilders,
+    @required Widget Function(BuildContext context) fallbackBuilder,
   }) {
-    final dynamic value = valueBuilder();
+    final dynamic value = valueBuilder(context);
     if (caseBuilders[value] != null) {
-      return caseBuilders[value]();
+      return caseBuilders[value](context);
     } else {
-      return fallbackBuilder();
+      return fallbackBuilder(context);
     }
   }
 
@@ -36,15 +37,17 @@ class ConditionalSwitch {
   ///  it is used when none of the keys in [caseBuilders] matches
   /// the value returns by [valueBuilder].
   static List<Widget> list({
-    @required dynamic Function() valueBuilder,
-    @required Map<dynamic, List<Widget> Function()> caseBuilders,
-    @required List<Widget> Function() fallbackBuilder,
+    @required BuildContext context,
+    @required dynamic Function(BuildContext context) valueBuilder,
+    @required
+        Map<dynamic, List<Widget> Function(BuildContext context)> caseBuilders,
+    @required List<Widget> Function(BuildContext context) fallbackBuilder,
   }) {
-    final dynamic value = valueBuilder();
+    final dynamic value = valueBuilder(context);
     if (caseBuilders[value] != null) {
-      return caseBuilders[value]();
+      return caseBuilders[value](context);
     } else {
-      return fallbackBuilder();
+      return fallbackBuilder(context);
     }
   }
 }
