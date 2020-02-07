@@ -10,10 +10,15 @@ void main() {
       final Widget aConditionWidget = Container();
       final Widget fallbackWidget = Container();
       await tester.pumpWidget(
-        ConditionalSwitch.single(
-          valueBuilder: () => 'A',
-          caseBuilders: {'A': () => aConditionWidget},
-          fallbackBuilder: () => fallbackWidget,
+        Builder(
+          builder: (BuildContext context) {
+            return ConditionalSwitch.single(
+              context: context,
+              valueBuilder: (_) => 'A',
+              caseBuilders: {'A': (_) => aConditionWidget},
+              fallbackBuilder: (_) => fallbackWidget,
+            );
+          },
         ),
       );
 
@@ -28,10 +33,15 @@ void main() {
       final Widget aConditionWidget = Container();
       final Widget fallbackWidget = Container();
       await tester.pumpWidget(
-        ConditionalSwitch.single(
-          valueBuilder: () => 'B',
-          caseBuilders: {'A': () => aConditionWidget},
-          fallbackBuilder: () => fallbackWidget,
+        Builder(
+          builder: (BuildContext context) {
+            return ConditionalSwitch.single(
+              context: context,
+              valueBuilder: (_) => 'B',
+              caseBuilders: {'A': (_) => aConditionWidget},
+              fallbackBuilder: (_) => fallbackWidget,
+            );
+          },
         ),
       );
 
@@ -46,12 +56,17 @@ void main() {
       final List<Widget> aConditionWidgetList = [Container()];
       final List<Widget> fallbackWidgetList = [Container()];
       await tester.pumpWidget(
-        Column(
-          children: ConditionalSwitch.list(
-            valueBuilder: () => 'A',
-            caseBuilders: {'A': () => aConditionWidgetList},
-            fallbackBuilder: () => fallbackWidgetList,
-          ),
+        Builder(
+          builder: (BuildContext context) {
+            return Column(
+              children: ConditionalSwitch.list(
+                context: context,
+                valueBuilder: (_) => 'A',
+                caseBuilders: {'A': (_) => aConditionWidgetList},
+                fallbackBuilder: (_) => fallbackWidgetList,
+              ),
+            );
+          },
         ),
       );
 
@@ -71,12 +86,17 @@ void main() {
       final List<Widget> aConditionWidgetList = [Container()];
       final List<Widget> fallbackWidgetList = [Container()];
       await tester.pumpWidget(
-        Column(
-          children: ConditionalSwitch.list(
-            valueBuilder: () => 'B',
-            caseBuilders: {'A': () => aConditionWidgetList},
-            fallbackBuilder: () => fallbackWidgetList,
-          ),
+        Builder(
+          builder: (BuildContext context) {
+            return Column(
+              children: ConditionalSwitch.list(
+                context: context,
+                valueBuilder: (_) => 'B',
+                caseBuilders: {'A': (_) => aConditionWidgetList},
+                fallbackBuilder: (_) => fallbackWidgetList,
+              ),
+            );
+          },
         ),
       );
 

@@ -10,10 +10,15 @@ void main() {
       final Widget trueWidget = Container();
       final Widget falseWidget = Container();
       await tester.pumpWidget(
-        Conditional.single(
-          conditionBuilder: () => true,
-          widgetBuilder: () => trueWidget,
-          fallbackBuilder: () => falseWidget,
+        Builder(
+          builder: (BuildContext context) {
+            return Conditional.single(
+              context: context,
+              conditionBuilder: (_) => true,
+              widgetBuilder: (_) => trueWidget,
+              fallbackBuilder: (_) => falseWidget,
+            );
+          },
         ),
       );
 
@@ -28,10 +33,15 @@ void main() {
       final Widget trueWidget = Container();
       final Widget falseWidget = Container();
       await tester.pumpWidget(
-        Conditional.single(
-          conditionBuilder: () => false,
-          widgetBuilder: () => trueWidget,
-          fallbackBuilder: () => falseWidget,
+        Builder(
+          builder: (BuildContext context) {
+            return Conditional.single(
+              context: context,
+              conditionBuilder: (_) => false,
+              widgetBuilder: (_) => trueWidget,
+              fallbackBuilder: (_) => falseWidget,
+            );
+          },
         ),
       );
 
@@ -47,12 +57,17 @@ void main() {
       final List<Widget> trueWidgetList = [Container()];
       final List<Widget> falseWidgetList = [Container()];
       await tester.pumpWidget(
-        Column(
-          children: Conditional.list(
-            conditionBuilder: () => true,
-            widgetBuilder: () => trueWidgetList,
-            fallbackBuilder: () => falseWidgetList,
-          ),
+        Builder(
+          builder: (BuildContext context) {
+            return Column(
+              children: Conditional.list(
+                context: context,
+                conditionBuilder: (_) => true,
+                widgetBuilder: (_) => trueWidgetList,
+                fallbackBuilder: (_) => falseWidgetList,
+              ),
+            );
+          },
         ),
       );
 
@@ -73,12 +88,17 @@ void main() {
       final List<Widget> trueWidgetList = [Container()];
       final List<Widget> falseWidgetList = [Container()];
       await tester.pumpWidget(
-        Column(
-          children: Conditional.list(
-            conditionBuilder: () => false,
-            widgetBuilder: () => trueWidgetList,
-            fallbackBuilder: () => falseWidgetList,
-          ),
+        Builder(
+          builder: (BuildContext context) {
+            return Column(
+              children: Conditional.list(
+                context: context,
+                conditionBuilder: (_) => false,
+                widgetBuilder: (_) => trueWidgetList,
+                fallbackBuilder: (_) => falseWidgetList,
+              ),
+            );
+          },
         ),
       );
 
