@@ -69,7 +69,7 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        ConditionalSwitch.single(
+        ConditionalSwitch.single<String>(
           context: context,
           valueBuilder: (BuildContext context) => 'A',
           caseBuilders: {

@@ -12,7 +12,7 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            return ConditionalSwitch.single(
+            return ConditionalSwitch.single<String>(
               context: context,
               valueBuilder: (_) => 'A',
               caseBuilders: {'A': (_) => aConditionWidget},
@@ -28,16 +28,16 @@ void main() {
   );
 
   testWidgets(
-    'Render widget by `fallbackBuilder` if `valueBuilder` returns "B"',
+    'Render widget by `fallbackBuilder` if `valueBuilder` returns `0`',
     (WidgetTester tester) async {
       final Widget aConditionWidget = Container();
       final Widget fallbackWidget = Container();
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            return ConditionalSwitch.single(
+            return ConditionalSwitch.single<dynamic>(
               context: context,
-              valueBuilder: (_) => 'B',
+              valueBuilder: (_) => 0,
               caseBuilders: {'A': (_) => aConditionWidget},
               fallbackBuilder: (_) => fallbackWidget,
             );
@@ -59,7 +59,7 @@ void main() {
         Builder(
           builder: (BuildContext context) {
             return Column(
-              children: ConditionalSwitch.list(
+              children: ConditionalSwitch.list<String>(
                 context: context,
                 valueBuilder: (_) => 'A',
                 caseBuilders: {'A': (_) => aConditionWidgetList},
@@ -81,7 +81,7 @@ void main() {
   );
 
   testWidgets(
-    'Render list of widgets by `fallbackBuilder` if `valueBuilder` returns "B"',
+    'Render list of widgets by `fallbackBuilder` if `valueBuilder` returns `0`',
     (WidgetTester tester) async {
       final List<Widget> aConditionWidgetList = [Container()];
       final List<Widget> fallbackWidgetList = [Container()];
@@ -89,9 +89,9 @@ void main() {
         Builder(
           builder: (BuildContext context) {
             return Column(
-              children: ConditionalSwitch.list(
+              children: ConditionalSwitch.list<dynamic>(
                 context: context,
-                valueBuilder: (_) => 'B',
+                valueBuilder: (_) => 0,
                 caseBuilders: {'A': (_) => aConditionWidgetList},
                 fallbackBuilder: (_) => fallbackWidgetList,
               ),
