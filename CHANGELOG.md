@@ -1,3 +1,9 @@
+## [1.1.0] - 2020-02-08
+
+* Added `BuildContext` parameter to builder functions.
+
+* Added generic type to switch functions.
+
 ## [1.0.2] - 2019-12-13
 
 * Added example.
