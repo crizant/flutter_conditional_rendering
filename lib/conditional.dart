@@ -12,10 +12,10 @@ class Conditional {
   /// - [fallbackBuilder] is a function which returns a `Widget`,
   ///  when [conditionBuilder] returns `false`.
   static Widget single({
-    @required BuildContext context,
-    @required bool Function(BuildContext context) conditionBuilder,
-    @required Widget Function(BuildContext context) widgetBuilder,
-    @required Widget Function(BuildContext context) fallbackBuilder,
+    required BuildContext context,
+    required bool Function(BuildContext context) conditionBuilder,
+    required Widget Function(BuildContext context) widgetBuilder,
+    required Widget Function(BuildContext context) fallbackBuilder,
   }) {
     if (conditionBuilder(context) == true) {
       return widgetBuilder(context);
@@ -32,10 +32,10 @@ class Conditional {
   /// - [fallbackBuilder] is a function which returns a `List<Widget>`,
   ///  when [conditionBuilder] returns `false`.
   static List<Widget> list({
-    @required BuildContext context,
-    @required bool Function(BuildContext context) conditionBuilder,
-    @required List<Widget> Function(BuildContext context) widgetBuilder,
-    @required List<Widget> Function(BuildContext context) fallbackBuilder,
+    required BuildContext context,
+    required bool Function(BuildContext context) conditionBuilder,
+    required List<Widget> Function(BuildContext context) widgetBuilder,
+    required List<Widget> Function(BuildContext context) fallbackBuilder,
   }) {
     if (conditionBuilder(context) == true) {
       return widgetBuilder(context);

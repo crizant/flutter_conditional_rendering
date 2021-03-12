@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
               widgetBuilder: (BuildContext context) {
                 return Column(
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'The number is even.',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Icon(
+                    const Icon(
                       Icons.check,
                       size: 60.0,
                       color: Colors.green,
@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               fallbackBuilder: (BuildContext context) {
                 return Column(
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'The number is not even.',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Icon(
+                    const Icon(
                       Icons.close,
                       size: 60.0,
                       color: Colors.red,
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
