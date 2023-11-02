@@ -84,6 +84,41 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
+### Lambda switch condition:
+
+Returns the first lambda which matches (returns true).
+
+Lambdas are evaluated in order therefore it would make sense to order them so the most likely matched conditions are placed first
+and the least likely last.
+
+
+```dart
+class MyWidget extends StatelessWidget {
+  var counter = 8;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        LambdaConditionalSwitch.single(
+          context: context,
+          caseBuilders: {
+                () => counter == 0: (BuildContext context) =>
+            const Text('Counter is 0!'),
+                () => counter > 0 && counter % 5 == 0: (BuildContext context) =>
+            const Text('Counter is divisible by 5!'),
+                () => counter == 8: (BuildContext context) =>
+            const Text('Counter is 8!'),
+          },
+          fallbackBuilder: (BuildContext context) =>
+          const Text('None of the cases matched!'),
+        ),
+      ],
+    );
+  }
+}
+```
+
 ## Want a list of widgets?
 
 If you want to conditionally render a list of widgets (`List<Widget>`) instead of a single one. Use `Conditional.list()` and `ConditionalSwitch.list()`!
