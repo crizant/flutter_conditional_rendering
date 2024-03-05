@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             const SizedBox(
               height: 30.0,
@@ -62,18 +62,18 @@ class _MyHomePageState extends State<MyHomePage> {
               context: context,
               conditionBuilder: (BuildContext context) => _counter % 2 == 0,
               widgetBuilder: (BuildContext context) {
-                return Column(
+                return const Column(
                   children: <Widget>[
-                    const Text(
+                    Text(
                       'The number is even.',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10.0,
                     ),
-                    const Icon(
+                    Icon(
                       Icons.check,
                       size: 60.0,
                       color: Colors.green,
@@ -82,18 +82,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               fallbackBuilder: (BuildContext context) {
-                return Column(
+                return const Column(
                   children: <Widget>[
-                    const Text(
+                    Text(
                       'The number is not even.',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10.0,
                     ),
-                    const Icon(
+                    Icon(
                       Icons.close,
                       size: 60.0,
                       color: Colors.red,

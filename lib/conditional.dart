@@ -10,17 +10,18 @@ class Conditional {
   /// - [widgetBuilder] is a function which returns a `Widget`,
   ///  when [conditionBuilder] returns `true`.
   /// - [fallbackBuilder] is a function which returns a `Widget`,
-  ///  when [conditionBuilder] returns `false`.
+  ///  when [conditionBuilder] returns `false`. If [fallbackBuilder] is
+  /// not provided, a `Container()` will be returned.
   static Widget single({
     required BuildContext context,
     required bool Function(BuildContext context) conditionBuilder,
     required Widget Function(BuildContext context) widgetBuilder,
-    required Widget Function(BuildContext context) fallbackBuilder,
+    Widget Function(BuildContext context)? fallbackBuilder,
   }) {
     if (conditionBuilder(context) == true) {
       return widgetBuilder(context);
     } else {
-      return fallbackBuilder(context);
+      return fallbackBuilder?.call(context) ?? Container();
     }
   }
 
@@ -30,17 +31,18 @@ class Conditional {
   /// - [widgetBuilder] is a function which returns a `List<Widget>`,
   ///  when [conditionBuilder] returns `true`.
   /// - [fallbackBuilder] is a function which returns a `List<Widget>`,
-  ///  when [conditionBuilder] returns `false`.
+  ///  when [conditionBuilder] returns `false`. If [fallbackBuilder] is
+  /// not provided, an empty list will be returned.
   static List<Widget> list({
     required BuildContext context,
     required bool Function(BuildContext context) conditionBuilder,
     required List<Widget> Function(BuildContext context) widgetBuilder,
-    required List<Widget> Function(BuildContext context) fallbackBuilder,
+    List<Widget> Function(BuildContext context)? fallbackBuilder,
   }) {
     if (conditionBuilder(context) == true) {
       return widgetBuilder(context);
     } else {
-      return fallbackBuilder(context);
+      return fallbackBuilder?.call(context) ?? [];
     }
   }
 }

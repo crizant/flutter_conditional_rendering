@@ -51,7 +51,31 @@ void main() {
   );
 
   testWidgets(
-    'Render list of widgets by `widgetBuilder` if ' +
+    'Render a `Container()` widget if `fallbackBuilder` is not provided and '
+    '`conditionBuilder` returns `false`',
+    (WidgetTester tester) async {
+      final Widget trueWidget = Container();
+      final Widget falseWidget = Container();
+      await tester.pumpWidget(
+        Builder(
+          builder: (BuildContext context) {
+            return Conditional.single(
+              context: context,
+              conditionBuilder: (_) => false,
+              widgetBuilder: (_) => trueWidget,
+            );
+          },
+        ),
+      );
+
+      expect(find.byWidget(falseWidget), findsNothing);
+      expect(find.byWidget(trueWidget), findsNothing);
+      expect(find.byType(Container), findsOne);
+    },
+  );
+
+  testWidgets(
+    'Render a list of widgets by `widgetBuilder` if ' +
         '`conditionBuilder` returns `true`',
     (WidgetTester tester) async {
       final List<Widget> trueWidgetList = [Container()];
@@ -82,7 +106,7 @@ void main() {
   );
 
   testWidgets(
-    'Render list of widgets by `widgetBuilder` if ' +
+    'Render a list of widgets by `widgetBuilder` if ' +
         '`conditionBuilder` returns `false`',
     (WidgetTester tester) async {
       final List<Widget> trueWidgetList = [Container()];
@@ -105,6 +129,31 @@ void main() {
       for (Widget widget in falseWidgetList) {
         expect(find.byWidget(widget), findsOneWidget);
       }
+
+      for (Widget widget in trueWidgetList) {
+        expect(find.byWidget(widget), findsNothing);
+      }
+    },
+  );
+
+  testWidgets(
+    'Render an empty list if `fallbackBuilder` is not provided and ' +
+        '`conditionBuilder` returns `false`',
+    (WidgetTester tester) async {
+      final List<Widget> trueWidgetList = [Container()];
+      await tester.pumpWidget(
+        Builder(
+          builder: (BuildContext context) {
+            return Column(
+              children: Conditional.list(
+                context: context,
+                conditionBuilder: (_) => false,
+                widgetBuilder: (_) => trueWidgetList,
+              ),
+            );
+          },
+        ),
+      );
 
       for (Widget widget in trueWidgetList) {
         expect(find.byWidget(widget), findsNothing);

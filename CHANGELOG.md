@@ -1,3 +1,7 @@
+## [2.1.0] - 2024-03-05
+
+- Make `fallbackBuilder` optional.
+
 ## [2.0.0] - 2020-03-12
 
 - Migrate to null safety.

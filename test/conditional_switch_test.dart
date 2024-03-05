@@ -51,7 +51,32 @@ void main() {
   );
 
   testWidgets(
-    'Render list of widgets by case "A" builder if `valueBuilder` returns "A"',
+    'Render a `Container()` widget if `fallbackBuilder` is not provided and ' +
+        '`valueBuilder` returns `0`',
+    (WidgetTester tester) async {
+      final Widget aConditionWidget = Container();
+      final Widget fallbackWidget = Container();
+      await tester.pumpWidget(
+        Builder(
+          builder: (BuildContext context) {
+            return ConditionalSwitch.single<dynamic>(
+              context: context,
+              valueBuilder: (_) => 0,
+              caseBuilders: {'A': (_) => aConditionWidget},
+            );
+          },
+        ),
+      );
+
+      expect(find.byWidget(fallbackWidget), findsNothing);
+      expect(find.byWidget(aConditionWidget), findsNothing);
+      expect(find.byType(Container), findsOne);
+    },
+  );
+
+  testWidgets(
+    'Render a list of widgets by case "A" builder if ' +
+        '`valueBuilder` returns "A"',
     (WidgetTester tester) async {
       final List<Widget> aConditionWidgetList = [Container()];
       final List<Widget> fallbackWidgetList = [Container()];
@@ -81,7 +106,8 @@ void main() {
   );
 
   testWidgets(
-    'Render list of widgets by `fallbackBuilder` if `valueBuilder` returns `0`',
+    'Render a list of widgets by `fallbackBuilder` if ' +
+        '`valueBuilder` returns `0`',
     (WidgetTester tester) async {
       final List<Widget> aConditionWidgetList = [Container()];
       final List<Widget> fallbackWidgetList = [Container()];
@@ -103,6 +129,31 @@ void main() {
       for (Widget widget in fallbackWidgetList) {
         expect(find.byWidget(widget), findsOneWidget);
       }
+
+      for (Widget widget in aConditionWidgetList) {
+        expect(find.byWidget(widget), findsNothing);
+      }
+    },
+  );
+
+  testWidgets(
+    'Render an empty list if `fallbackBuilder` is not provided ' +
+        'and `valueBuilder` returns `0`',
+    (WidgetTester tester) async {
+      final List<Widget> aConditionWidgetList = [Container()];
+      await tester.pumpWidget(
+        Builder(
+          builder: (BuildContext context) {
+            return Column(
+              children: ConditionalSwitch.list<dynamic>(
+                context: context,
+                valueBuilder: (_) => 0,
+                caseBuilders: {'A': (_) => aConditionWidgetList},
+              ),
+            );
+          },
+        ),
+      );
 
       for (Widget widget in aConditionWidgetList) {
         expect(find.byWidget(widget), findsNothing);
